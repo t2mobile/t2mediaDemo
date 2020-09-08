@@ -27,7 +27,7 @@ import com.t2m.tts.Tts; // 如果不需要TTS则无需import
 Initializer.init(this); // 初始化SDK
 Tts.init(this); // 初始化TTS服务, 如果不需要TTS则无需初始化
 ```
-_注意: 如要使用请首先安装TTS服务_
+_注意: 如要使用TTS请首先安装TTS服务: [t2tts-release.apk](https://github.com/t2mobile/t2mediaDemo/raw/master/TtsService/t2tts-release.apk)_
 
 # SDK使用
 请参考demo实现 [CameraBase_1_3.java](https://github.com/t2mobile/t2mediaDemo/raw/master/app/src/main/java/com/hf/t2mediademo/CameraBase_1_3.java)
@@ -35,3 +35,15 @@ _注意: 如要使用请首先安装TTS服务_
 # API文档
 见仓库根目录下的doc目录
 
+# 关于授权
+SDK只能运行在C7设备之上
+
+# 已知问题
+1. 预览界面偶现异常
+    * Demo的已知问题，和SDK无关。会在在后续Demo更新中修复
+2. TTS Service crash
+    * TTS Service的问题会在后续版本中修复
+3. Demo crash
+    * Demo的已知问题，和SDK无关。会在在后续Demo更新中修复
+4. 分流状态且缓慢
+    * Demo在切换分流状态时对Camera做了完全的关闭和开启导致。可通过优化Camera打开关闭的业务逻辑实现提升。Demo中仅做SDK的功能演示，不做这个优化。
