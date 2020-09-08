@@ -33,5 +33,5 @@ _注意: 如要使用请首先安装TTS服务_
 请参考demo实现 [CameraBase_1_3.java](https://github.com/t2mobile/t2mediaDemo/raw/master/app/src/main/java/com/hf/t2mediademo/CameraBase_1_3.java)
 
 # API文档
-[文档](https://github.com/t2mobile/t2mediaDemo/raw/master/doc/index.html)
+见仓库根目录下的doc目录
 
