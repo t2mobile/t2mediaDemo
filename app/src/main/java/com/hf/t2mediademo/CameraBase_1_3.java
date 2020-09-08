@@ -40,7 +40,7 @@ import java.util.TimerTask;
 public abstract class CameraBase_1_3 extends AppCompatActivity {
     private static final String TAG = CameraBase_1_3.class.getSimpleName();
 
-    private String mCameraId = "1";
+    private String mCameraId = "0";
 
     private static final int INPUT_WIDTH = 1920;
     private static final int INPUT_HEIGHT = 1080;
