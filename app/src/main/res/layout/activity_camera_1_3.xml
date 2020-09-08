@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextureView android:id="@+id/preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout android:id="@+id/btn_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:buttonBarStyle"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_btn_background"
+        android:orientation="horizontal" >
+        <Button android:id="@+id/btn_move_detect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="?android:buttonBarButtonStyle"
+            android:layout_weight="1"
+            android:text="@string/btn_move_detect"/>
+        <Button android:id="@+id/btn_record1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="?android:buttonBarButtonStyle"
+            android:layout_weight="1"
+            android:text="@string/btn_record1"/>
+        <Button android:id="@+id/btn_record2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="?android:buttonBarButtonStyle"
+            android:layout_weight="1"
+            android:text="@string/btn_record2"/>
+        <Button android:id="@+id/btn_snapshot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="?android:buttonBarButtonStyle"
+            android:layout_weight="1"
+            android:text="@string/btn_snapshot"/>
+    </LinearLayout>
+
+    <TextView android:id="@+id/hint_snapshot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_panel"
+        android:background="@color/color_hint_background"
+        android:text="@string/hint_snapshot" />
+
+    <TextView android:id="@+id/hint_record2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/hint_snapshot"
+        android:background="@color/color_hint_background"
+        android:text="@string/hint_record2" />
+
+    <TextView android:id="@+id/hint_record1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/hint_record2"
+        android:background="@color/color_hint_background"
+        android:text="@string/hint_record1" />
+
+    <TextView android:id="@+id/hint_move_detect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/hint_record1"
+        android:background="@color/color_hint_background"
+        android:text="@string/hint_move_detect_fail" />
+
+</android.widget.RelativeLayout>

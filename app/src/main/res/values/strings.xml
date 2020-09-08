@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">T2MediaDemo</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="title_activity_camera1_1_3">Camera1_1_3</string>
+    <string name="title_activity_camera2_1_3">Camera2_1_3</string>
+    <string name="title_activity_camera2_3_3">Camera2_3_3</string>
+
+    <string name="msg_main">Demo实现4路视频输出\n1. 预览\n2. 录像1\n3. 录像2\n4. 拍照(视频抽帧)</string>
+
+    <string name="btn_camera1_1_3">Camera1</string>
+    <string name="btn_camera2_1_3">Camera2</string>
+
+    <string name="btn_move_detect">移动侦测</string>
+    <string name="btn_record1">录像1</string>
+    <string name="btn_record2">录像2</string>
+    <string name="btn_snapshot">抽帧</string>
+
+    <string name="hint_move_detect_success">侦测到移动</string>
+    <string name="hint_move_detect_fail">未侦测到移动</string>
+
+    <string name="hint_record1">录像1：</string>
+    <string name="hint_record2">录像2：</string>
+
+    <string name="hint_snapshot">拍照: </string>
+</resources>
