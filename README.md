@@ -1,10 +1,10 @@
 # t2mediaDemo
 这个Demo用于演示t2media SDK如何使用。t2media实现功能如下：
-1. 移动侦测
-2. 视频分流
-3. 视频水印叠加
-4. 视频抽帧
-5. TTS (需要安装额外的TTS服务)
+1. 移动侦测 **(MoveDetector)**
+2. 视频分流 **(ImageRender)**
+3. 视频水印叠加 **(ImageRender)**
+4. 视频抽帧 **(ImageRender)**
+5. TTS **(Tts)** PS: 需要安装额外的TTS服务
 
 # SDK文件
 [t2media-release.aar](https://github.com/t2mobile/t2mediaDemo/raw/master/app/libs/t2media-release.aar) <br>
