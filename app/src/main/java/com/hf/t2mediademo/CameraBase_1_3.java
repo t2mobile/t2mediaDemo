@@ -200,6 +200,7 @@ public abstract class CameraBase_1_3 extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        mPreviewOn = mRecord1On = mRecord2On = false;
         updatePreviewView();
         restartCamera();
         startWatermark();
@@ -208,6 +209,9 @@ public abstract class CameraBase_1_3 extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+
+        mPreviewOn = mRecord1On = mRecord2On = false;
+        restartCamera();
 
         closeCamera();
         stopWatermark();
@@ -493,57 +497,59 @@ public abstract class CameraBase_1_3 extends AppCompatActivity {
         // close first
         closeCamera();
 
-        // create ImageRender && config input stream
-        mImageRender = new ImageRender("Camera1Render");
-        mImageRender.configInputStream(INPUT_WIDTH, INPUT_HEIGHT, mCamera.orientation(mCameraId), mCamera.mirror(mCameraId));
+        if (mPreviewOn || mRecord1On || mRecord2On) {
+            // create ImageRender && config input stream
+            mImageRender = new ImageRender("Camera1Render");
+            mImageRender.configInputStream(INPUT_WIDTH, INPUT_HEIGHT, mCamera.orientation(mCameraId), mCamera.mirror(mCameraId));
 
-        // config preview output stream
-        if (mPreviewOn) {
-            mPreviewStream = new PreviewStream("preview", mImageRender, getPreviewSurfaceAwait());
-            mPreviewStream.create();
-        } else {
-            mPreviewStream = null;
-        }
-
-        // config record1 stream
-        if (mRecord1On) {
-            mRecord1Path = Util.videoFilePath("1");
-            Util.prepareDir(mRecord1Path);
-            mRecord1Dirty = true;
-            Log.d(TAG, "start record1: " + mRecord1Path);
-            mRecord1Stream = RecordStream.createH265("Record1", mImageRender, RECORD1_WIDTH, RECORD1_HEIGHT, RECORD1_BITRATE, RECORD1_FPS, 0, mRecord1Path);
-            mRecord1Stream.create();
-        } else {
-            mRecord1Stream = null;
-        }
-
-        // config record2 stream
-        if (mRecord2On) {
-            mRecord2Path = Util.videoFilePath("2");
-            Util.prepareDir(mRecord2Path);
-            mRecord2Dirty = true;
-            Log.d(TAG, "start record2: " + mRecord2Path);
-            mRecord2Stream = RecordStream.createH265("Record2", mImageRender, RECORD2_WIDTH, RECORD2_HEIGHT, RECORD2_BITRATE, RECORD2_FPS, 0, mRecord2Path);
-            mRecord2Stream.create();
-        } else {
-            mRecord2Stream = null;
-        }
-
-        // start ImageRender
-        mImageRender.start();
-
-        // get ImageRender input surface
-        mRenderInputSurface = mImageRender.getInputSurfaceAwait();
-
-        // open camera
-        mCamera.open(mCameraId, mRenderInputSurface, error->{
-            if (error) {
-                Log.e(TAG, "open camera failed.");
-                return;
+            // config preview output stream
+            if (mPreviewOn) {
+                mPreviewStream = new PreviewStream("preview", mImageRender, getPreviewSurfaceAwait());
+                mPreviewStream.create();
+            } else {
+                mPreviewStream = null;
             }
 
-            Log.d(TAG, ">> camera opened");
-        });
+            // config record1 stream
+            if (mRecord1On) {
+                mRecord1Path = Util.videoFilePath("1");
+                Util.prepareDir(mRecord1Path);
+                mRecord1Dirty = true;
+                Log.d(TAG, "start record1: " + mRecord1Path);
+                mRecord1Stream = RecordStream.createH265("Record1", mImageRender, RECORD1_WIDTH, RECORD1_HEIGHT, RECORD1_BITRATE, RECORD1_FPS, 0, mRecord1Path);
+                mRecord1Stream.create();
+            } else {
+                mRecord1Stream = null;
+            }
+
+            // config record2 stream
+            if (mRecord2On) {
+                mRecord2Path = Util.videoFilePath("2");
+                Util.prepareDir(mRecord2Path);
+                mRecord2Dirty = true;
+                Log.d(TAG, "start record2: " + mRecord2Path);
+                mRecord2Stream = RecordStream.createH265("Record2", mImageRender, RECORD2_WIDTH, RECORD2_HEIGHT, RECORD2_BITRATE, RECORD2_FPS, 0, mRecord2Path);
+                mRecord2Stream.create();
+            } else {
+                mRecord2Stream = null;
+            }
+
+            // start ImageRender
+            mImageRender.start();
+
+            // get ImageRender input surface
+            mRenderInputSurface = mImageRender.getInputSurfaceAwait();
+
+            // open camera
+            mCamera.open(mCameraId, mRenderInputSurface, error -> {
+                if (error) {
+                    Log.e(TAG, "open camera failed.");
+                    return;
+                }
+
+                Log.d(TAG, ">> camera opened");
+            });
+        }
 
         Log.d(TAG, ">>>> restartCamera()# end");
     }
