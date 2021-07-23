@@ -36,14 +36,19 @@ _注意: 如要使用TTS请首先安装TTS服务: [t2tts-release.apk](https://gi
 见仓库根目录下的doc目录
 
 # 关于授权
-SDK以及TTS服务均只能运行在C7设备之上
+SDK以及TTS服务均做了鉴权
+
+设备授权
+* C2
+* C7
+
+测试授权
+* 截止2022-01-01
 
 # 已知问题
 1. 预览界面偶现异常
     * Demo的已知问题，和SDK无关。会在在后续Demo更新中修复
 2. TTS Service crash
     * TTS Service的问题会在后续版本中修复
-3. Demo crash
-    * Demo的已知问题，和SDK无关。会在在后续Demo更新中修复
-4. 分流状态切换慢
+3. 分流状态切换慢
     * Demo在切换分流状态时对Camera做了完全的关闭和开启导致。可通过优化Camera打开关闭的业务逻辑实现提升。Demo中仅做SDK的功能演示，不做这个优化。
